@@ -1,29 +1,27 @@
 <!DOCTYPE html>
-<html>
-    <head>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-      <script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   
+     <title>Trusted Reviews</title>
+    <script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-storage.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="css/homePage.css">
-<link rel="stylesheet" type="text/css" href="css/topFive.css">
-<link rel="stylesheet" type="text/css" href="css/footer.css">
-<link rel="stylesheet" type="text/css" href="css/features.css">
-<link rel="stylesheet" type="text/css" href="css/topthreeReviews.css">
-<link rel="stylesheet" type="text/css" href="css/topfiveproperties.css">
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="HomePage.css">
+
+<link rel="stylesheet" type="text/css" href="footer.css">
+<link rel="stylesheet" type="text/css" href="features.css">
+<link rel="stylesheet" type="text/css" href="TopthreeReviews.css">
+<link rel="stylesheet" type="text/css" href="TopFiveProperties.css">
 <link href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"/>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Racing+Sans+One|Sirin+Stencil|Yatra+One&display=swap" rel="stylesheet">
-<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
 <link rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
 <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Lalezar|Racing+Sans+One|Sirin+Stencil|Yatra+One&display=swap" rel="stylesheet">
@@ -33,189 +31,22 @@
 <link rel="stylesheet" type="text/css" href="https://themify.me/wp-content/themes/themify-v32/themify-icons/themify-icons.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
-      <style>
-        body{
-          background-color: #f4f5f6;
-        }
-        p{
-          color: #243245;
-          font-size: 19px;
-
-        }
-
-        h2{
-          color: #005451;
-          font-family: 'Oswald', sans-serif;
-         font-size: 35px;
-         font-weight: bold;     }
-
-.search{
-          display: flex;
-          width: 33%;
-          margin: 1% auto;
-        }
-        .main-header {
+<style>
+  .main-header {
   width: 100%;
   border-bottom: 1px solid grey;
   position: absolute;
   top: 0;
 }
-
-.MoreInfoButton{
-display: inline-block;
-  width: 90px;
-  height: 40px;
-  border-radius: 20px;
-  background: #eaeaea;
-  color: #300095;
-  text-align: center;  
-  font-size: 12px;
-  font-weight: bold;
-  margin-left: 5px;
-  margin-top: 15px;
-  border: 2px solid #fff;
-  transition: all .2s ease;
-  }
-
-.SearchCities{
-   padding: 20px;
-   height: 100%;
-   display: inline-block;
-   max-height: 0 auto;
-   background: #f4f5f6;
-   width: 100%;
-   /*box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3), 0 85px 60px -25px rgba(0, 0, 0, 0.1);*/
-}
-
-#cities{
-  width: 300px;
-  color: #300095;
-  font-weight: bold;
-}
-
-
-
- @keyframes pulse {
-   0% {
-     box-shadow: 0 0 0 0 var(--hover);
-  }
-}
-
- #raise:hover, #raise:focus {
-   box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
-   transform: translateY(-0.25em);
-}
-
-#raise {
-   --color: #300095;
-   --hover: #300095;
-}
-
- button {
-   color: var(--color);
-   transition: 0.25s;
-       border-radius: 10px;
-}
- button:hover, button:focus {
-   border-color: var(--hover);
-   color: #fff;
-}
- 
- button {
-   background: transparent;
-   border: 2px solid;
-   font: inherit;
-   line-height: 1;
-   margin: 0.5em;
-       border-radius: 10px;
-   padding: 10px;
-}
-
-.ProInfo{
-  border-radius: 65px;
-  padding-left: 150px;
-  padding-right: 150px;
-  width: 100%;
-  height: 400px;
-  background-color: #eceef3;
-  padding: 30px;
-}
-        .search{
-          width: 33%;
-          margin: 1% auto;
-        }
-     
-        .pCity{
-          font-size: 30px;
-          margin-right: 5%;
-          font-weight: bold;
-        }
-        .HImage{
-          width: 350px;
-          height: 340px;
-          border-radius: 30px;
-          float: left;
-          margin-right: 30px;
-          }          
-    
-        
-        </style>
-
-        <style type="text/css">
- 
-    body {
-      background-color: transparent;
-      transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-      transform-style: preserve-3d;
-      background-color: #f4f5f6;
-    }
-    
-    .searchBox {
-      position: absolute;
-      top: 270px;
-      left: 925px;
-      width: 608px;
-      height: 41px;
-      font-size: 35px;
-
-            }
-    .searchBtn{
-      position: absolute;
-      left: 1550px;
-      font-size: 30px;
-      font-weight: bold;
-      padding: 0px;
-      width: 120px;
-      height: 41px;
-      top: 273px;
-          border-radius: 10px;
-    }
-    #holidayTable{
-      z-index: 40;
-      position: absolute;
-      top:30%;
-      left:5%;
-      font-size: 30px;
-    }
-    .btnSearch{
-      font-size: 20px;
-          margin:  auto;
-          margin-left: 5%;
-          font-weight: bold;
-    }
-    #emailUS{
+#emailUS{
   color: #dadada;
 }
- </style>
-
-    </head>
-
-
-
-    <body>
-
-             <header class="main-header">
+</style>
+</head>
+ <body>
+       <header class="main-header">
        <div class="header">
        <img src="media/logo.png" class="webLogo">
   <!-- //////////////////////////////////// -->
@@ -223,15 +54,12 @@ display: inline-block;
         <button class="btn btn-secondary" id="sign-upP" onclick="toggleSignUpP()"><a>Sign Up as a Property owner</a></button>
         <button class="btn btn-secondary" id="sign-upM" onclick="toggleSignUpM()"><a>Sign Up as a Member</a></button>
         <button class="btn btn-secondary" id="sign-in" onclick="toggleLogin()"><a >Sign in</a></button>
-         <button class="btn btn-secondary" id="sign-out" onclick="logout()">Sign out</button>
         </div>
 
-
-
          <div class="overlay">
-         <div class="login4">
+         <div class="login">
          <div class="header2">
-           <h1 id="POLabel">Sign in</h1>
+           <h2>Sign in</h2>
            <i class="fas fa-times" onclick="toggleLogin()"></i>
          </div>
      
@@ -240,7 +68,7 @@ display: inline-block;
             <input type="text" id="LEmail" placeholder="Enter your Email" />
             <input type="password"  id="LPassword" placeholder="Enter your Password"/>
             <div class="loginbutton">
-          <button onclick="Login()">sign in</button>
+          <button onclick="Login()">Login</button>
           </br>
           </br>
           </br>
@@ -264,11 +92,11 @@ display: inline-block;
          <div class="overlay2">
          <div class="login2">
          <div class="header2">
-           <h1 id="POLabel">Sign up as Property Owner</h1>
+           <h2>Sign Up as Property Owner</h2>
            <i class="fas fa-times" onclick="toggleSignUpP()"></i>
          </div>
           <div class="newForm2">
-         <div class="form">
+         <form action="#" class="form">
             <input type="text" id="PFullName" placeholder="Full name" />
             <input type="text" id="PUsername" placeholder="Username" />
             <input type="text" id="PEmail" placeholder="Email" />
@@ -278,7 +106,7 @@ display: inline-block;
             <div class="SignUpbutton">
             <button onclick="RegisterP()">Register</button>
           </div>
-          </div>
+          </form>
           </div>  
         </div> <!-- login closing tag -->
         </div> <!-- overlay closing tag -->
@@ -287,11 +115,11 @@ display: inline-block;
      <div class="overlay3">
          <div class="login3">
          <div class="header3">
-           <h1 id="POLabel">Sign up as a Member</h1>
+           <h2>Sign Up as a Member</h2>
            <i class="fas fa-times" onclick="toggleSignUpM()"></i>
          </div>
           <div class="newForm3">
-         <div  class="form">
+         <form action="#" class="form">
             <input type="text" id="MFullName" placeholder="Full name" />
             <input type="text" id="MUsername" placeholder="Username" />
             <input type="text" id="MEmail" placeholder="Email" />
@@ -301,7 +129,7 @@ display: inline-block;
             <div class="SignUpbutton">
             <button onclick="RegisterM()">Register</button>
           </div>
-          </div>
+          </form>
           </div>  
         </div> <!-- login closing tag -->
         </div> <!-- overlay closing tag -->
@@ -320,38 +148,14 @@ display: inline-block;
 
 
 
-       </br>
-       </br>
-       </br>
-       </br>
-       </br>
-       </br>
-       </br>
-       </br>
-
-
-    <div class="search">
-      <P class="pCity" ></P>
-       <select style="display: block;" id="cities">
-          <option value="" style="display: block;" >City</option>
-          <option value="idv4">Dammam</option>
-          <option value="idv6">Jeddah</option>
-          <option value="idv6">Makkah</option>
-          <option value="idv6">Medina</option>
-          <option value="idv6">Riyadh</option>
-
-        </select>
-        
-      <button onclick="search()" class="btnSearch" id="raise"; >Search</button>
-
-
-     </div>
-    <div id="homsList">
-   </div>
-   </div>
-
-
-
+<section class="Aboutus">
+    <img src="media/logo.png" class="about-img">
+  <h2>TRUSTED REVIEWS</h2>
+  <p> <i class="bold"> Trusted Reviews </i> aims to improve the authenticity and quality of reviews submitted to the system. In order to achieve this, Blockchain technology has been implemented for its unique characteristics, such as immutability of data. Trusted Reviews has a user-friendly interface, supports both the Arabic and English languages. As an appreciation for honesty of submitted reviews, members will be awarded Thiqah credit points. <i class="bold"> Trusted Reviews </i> Provides the member with the possibility to search for a holiday home by specific criteria, the opportunity to share his experience, read and respond to comments, and view the Blockchain. In the end, we look forward to enhancing the member’s experience by reducing their time and effort.</p>
+   </Br>
+ </Br>
+</p>
+</section>
 
 
 <!--Footer-->
@@ -363,7 +167,7 @@ display: inline-block;
                             <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
                                 <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
                                 <p>Contact us via Email <br> We are always there for you!</p>
-                                    <button class="btn btn_get btn_get_two"><a id="emailUS" href="mailto:TrustedReviewsBC@gmail.com?Subject=Contact%20Trusted Reviews" target="_top">Email us</button>
+                                     <button class="btn btn_get btn_get_two"><a id="emailUS" href="mailto:TrustedReviewsBC@gmail.com?Subject=Contact%20Trusted Reviews" target="_top">Email us</button>
                                     <p class="mchimp-errmessage" style="display: none;"></p>
                                     <p class="mchimp-sucmessage" style="display: none;"></p>
                                 </form>
@@ -409,275 +213,39 @@ display: inline-block;
 
 
 
-
     </body> 
 
-
-
- <script>
-   
-   // Your web app's Firebase configuration
+<script>
+// Your web app's Firebase configuration
 var firebaseConfig = {
- apiKey: "AIzaSyBVKHsqnVyaPbvPmgzPqEK_9p2Hm4ZucYc",
- authDomain: "trusted2020-8c803.firebaseapp.com",
- databaseURL: "https://trusted2020-8c803.firebaseio.com",
- projectId: "trusted2020-8c803",
- storageBucket: "trusted2020-8c803.appspot.com",
- messagingSenderId: "662663714362",
- appId: "1:662663714362:web:1842f051b9bddf5f48c703",
- measurementId: "G-QDZ39S220R"
+  apiKey: "AIzaSyBVKHsqnVyaPbvPmgzPqEK_9p2Hm4ZucYc",
+  authDomain: "trusted2020-8c803.firebaseapp.com",
+  databaseURL: "https://trusted2020-8c803.firebaseio.com",
+  projectId: "trusted2020-8c803",
+  storageBucket: "trusted2020-8c803.appspot.com",
+  messagingSenderId: "662663714362",
+  appId: "1:662663714362:web:1842f051b9bddf5f48c703",
+  measurementId: "G-QDZ39S220R"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
+//firebase.analytics();
 var uu = sessionStorage.getItem('userId22');
           
 if(uu!=null)
 {
-
-   document.getElementById('sign-in').style.display='none';
-   document.getElementById('sign-upP').style.display='none';
-   document.getElementById('sign-upM').style.display='none';
-   document.getElementById('sign-out').style.display='inline';
+   document.getElementById('signin').style.display='none';
+   document.getElementById('signout').style.display='block';
 }else
 {
   
- document.getElementById('sign-in').style.display='inline';
-  document.getElementById('sign-upP').style.display='inline';
- document.getElementById('sign-upM').style.display='inline';
- document.getElementById('sign-out').style.display='none';
+ document.getElementById('signin').style.display='block';
+ document.getElementById('signout').style.display='none';
  
 }
 
 firebase.auth.Auth.Persistence.LOCAL;
-
-
-
-var url_string = window.location.href; //window.location.href
-var url = new URL(url_string);
-var city = url.searchParams.get("city");
-
-if(city!=null)
-{
-  firebase.database().ref("Property").once('value').then(function (snapshot){
-    snapshot.forEach(function (user){
-      user.forEach(function (property){
-        if(property.val().City===city)
-        {
-          firebase.database().ref("Reviews").orderByChild('PID').equalTo(property.key).once('value').then(function (reviewSnap){
-            pid=property.key;
-            pName=property.val().PropertyName;
-            pDec=property.val().Description;
-            pImg=property.val().Image;
-            Ptype=property.val().Type;
-            pReviewCount = reviewSnap.numChildren();
-
-               pRate=0;
-            i=0;
-            reviewSnap.forEach(function (review){
-              pRate+= parseInt(review.val().Rate);
-              i++;
-              if(pReviewCount===i)
-              {
-                pRate=pRate/pReviewCount;
-            
-
-        describ = function(pDec, length, ending) {
-    if (length == null) {
-      length = 100;
-    }
-    if (ending == null) {
-      ending = '...';
-    }
-    if (pDec.length > length) {
-      return pDec.substring(0, length - ending.length) + ending;
-    } else {
-      return pDec;
-    }
-  }
-
-            document.getElementById('homsList').innerHTML+=
-
-         '<div class="SearchCities">'+
-                              '<div class="ProInfo">'+
-                '  <img class="HImage"  src="'+pImg+'"/>'+
-
-
-                  '  <h2>'+pName+'</h3>'+
-                  '  <label  id="Ptype" class="matginAuto" style="margin-left: 0;">Type: '+Ptype+' </label> '+ '</br>' + 
-                  '  <p>'+describ(pDec,400)+'</p>'+
-
-                      '   <span onClick="addReview(\''+pid+'\')" class="fa fa-clipboard matginAuto" style="margin-right: 10px;cursor: pointer;"> </span>'+
-                      ' <label class="matginAuto" style="margin-left: 0;">'+pReviewCount+' Reviews</label>'+ '</br>' + 
-
-                        '  <span class="fa fa-star matginAuto" style="margin-right: 10px; color:gold"></span>'+
-                       '  <label class="matginAuto" style="margin-left: 0;">'+pRate+' Stars</label> '+ '</br>' + 
-
-                        ' <button onClick="redirect(\''+pid+'\')" class="MoreInfoButton">More Info</button>'+
-                 
-                        ' </div>'+
-                        ' </div>';
-
-
-    
-        }
-            });
-            
-          
-    
-          });
-        }
-        
-        
-      });
-    });
-  });
-}else
-{
-  
-firebase.database().ref("Property").once('value').then(function (snapshot){
-  snapshot.forEach(function (user){
-    user.forEach(function (property){
-      
-      
-      firebase.database().ref("Reviews").orderByChild('PID').equalTo(property.key).once('value').then(function (reviewSnap){
-        pid=property.key;
-        pName=property.val().PropertyName;
-        pDec=property.val().Description;
-        pImg=property.val().Image;
-        Ptype=property.val().Type;
-        pReviewCount = reviewSnap.numChildren();
-         pRate=0;
-        i=0;
-
-
-
-        describ = function(pDec, length, ending) {
-    if (length == null) {
-      length = 100;
-    }
-    if (ending == null) {
-      ending = '...';
-    }
-    if (pDec.length > length) {
-      return pDec.substring(0, length - ending.length) + ending;
-    } else {
-      return pDec;
-    }
-  }
-
-
-        if(reviewSnap.val()===null)
-        {
-         
-            document.getElementById('homsList').innerHTML+=
-
-            '<div class="SearchCities">'+
-                              '<div class="ProInfo">'+
-                '  <img class="HImage"  src="'+pImg+'"/>'+
-
-
-                  '  <h2>'+pName+'</h3>'+
-                 '  <label  id="Ptype" class="matginAuto" style="margin-left: 0;">Type: '+Ptype+' </label> '+ '</br>' + 
-                  '  <p>'+describ(pDec,400)+'</p>'+
-
-                      '   <span onClick="addReview(\''+pid+'\')" class="fa fa-clipboard matginAuto" style="margin-right: 10px;cursor: pointer;"> </span>'+
-                      ' <label class="matginAuto" style="margin-left: 0;">'+pReviewCount+' Reviews</label>'+ 
-
-                        '  <span class="fa fa-star matginAuto" style="margin-right: 10px; color:gold"></span>'+
-                       '  <label class="matginAuto" style="margin-left: 0;">'+pRate+' Stars</label> '+ '</br>' + 
-
-                        ' <button onClick="redirect(\''+pid+'\')" class="MoreInfoButton">More Info</button>'+
-                 
-                        ' </div>'+
-                        ' </div>';
-
-
-
-       }
-        reviewSnap.forEach(function (review){
-          pRate+= parseInt(review.val().Rate);
-          i++;
-          if(pReviewCount===i)
-          {
-            pRate=Number((pRate/pReviewCount).toFixed(2));
-  
-            
-
-            document.getElementById('homsList').innerHTML+=
-
-             '<div class="SearchCities">'+
-                              '<div class="ProInfo">'+
-                '  <img class="HImage"  src="'+pImg+'"/>'+
-
-
-                  '  <h2>'+pName+'</h3>'+
-                  '  <label  id="Ptype" class="matginAuto" style="margin-left: 0;">Type: '+Ptype+' </label> '+ '</br>' + 
-
-                  '  <p>'+describ(pDec,400)+'</p>'+
-
-                      '   <span onClick="addReview(\''+pid+'\')" class="fa fa-clipboard matginAuto" style="margin-right: 10px;cursor: pointer;"> </span>'+
-                      ' <label class="matginAuto" style="margin-left: 0;">'+pReviewCount+' Reviews</label>'+ '</br>' + 
-
-                        '  <span class="fa fa-star matginAuto" style="margin-right: 10px; color:gold"></span>'+
-                       '  <label class="matginAuto" style="margin-left: 0;">'+pRate+' Stars</label> '+ '</br>' + 
-
-                        ' <button onClick="redirect(\''+pid+'\')" class="MoreInfoButton">More Info</button>'+
-                 
-                        ' </div>'+
-                        ' </div>';
-
-
-          }
-        });
-       
-
-      });
-    });
-  });
-});
-}
-function search()
-{
-  
-  var e2 = document.getElementById("cities");
-         city = e2.options[e2.selectedIndex].text;
-  window.location.href="HolidayHomes.html?city="+city;
-
-}
-
-function redirect (propertyID){
-if(uu!=null){
-firebase.database().ref('MEMBER').child(uu).once('value').then(function(snapshot) {
-  var userinfo = snapshot.val(); 
-var isOwner=userinfo['PropertyOwner'];
-
-
-if(isOwner){
-window.location.href = "SingleHolidayHome-PO.html?p="+propertyID;
-
-}
-else
-{
-window.location.href = "SingleHolidayHome.html?p="+propertyID;
-}
-})
-}
-else{
-  window.location.href = "SingleHolidayHome.html?p="+propertyID;
-}
-
-
-}
-function logout()
-         {
-          sessionStorage.removeItem('userId22');
-          window.location.href = "index.html"
-         }
-
-
 </script>
-
 
 <script>
 function Login(){
@@ -879,7 +447,102 @@ function RegisterM(){
      return;
     
 }
+
+
+//************ Top Five Home ***************
+var PIDList=[];
+var PIDListCopy=[];
+var PRateList=[];
+var PRateListCopy=[];
+var PReviewsCountList=[];
+var TopFive=[];
+var i0=0;
+var j0=0;
+var k=0;
+firebase.database().ref("Property").once('value').then(function (POwnerList0){
+  POwnerList0.forEach(function (Owner0){
+    
+    firebase.database().ref("Property").child(Owner0.key).once('value').then(function (PropertyList0){
+      i0++;
+      j0=0;
+      PropertyList0.forEach(function(Property0){
+        j0++;
+        PIDList.push( Property0.key);
+       
+        if(i0===POwnerList0.numChildren()&& j0===PropertyList0.numChildren())
+        {
+          for(var i1=0;i1<PIDList.length;i1++)
+          { PRateList.push(0);
+            PReviewsCountList.push(0);
+            firebase.database().ref("Reviews").orderByChild('PID').equalTo(PIDList[i1]).once('value').then(function (ReviewList0){
+              var rate=0;
+              var j1=0
+               
+              if(ReviewList0.val()!=null)
+              {
+                ReviewList0.forEach(function (Review0){
+                  rate+= parseInt(Review0.val().Rate);
+                  j1++;
+                  
+                  if(j1===ReviewList0.numChildren())
+                  {
+
+                    rate=(rate/j1).toFixed(2);
+                    var rate2 = Number(rate);
+                    PRateList[PIDList.indexOf(Review0.val().PID)]=rate2;
+                    PReviewsCountList[PIDList.indexOf(Review0.val().PID)]=j1;
+                  }
+                });
+              }
+              k++; 
+              
+              if(k===PIDList.length)
+                {
+                  PIDListCopy=PIDList.slice();
+                  PRateListCopy=PRateList.slice();
+                  
+                  for(var k1=0;k1<5;k1++)
+                  {
+                    maxH=Math.max.apply(null,PRateList);
+                    TopFive.push(PIDList[PRateList.indexOf(maxH)]);
+                    
+                    PIDList.splice(PRateList.indexOf(maxH), 1);
+                    PRateList.splice(PRateList.indexOf(maxH), 1);
+                    //alert(PIDList[k1]+" : " +PRateList[k1]);
+                  }
+                   var c2=0
+                  for(var c1=0;c1<TopFive.length;c1++)
+                  {
+                    firebase.database().ref("Property").once('value').then(function(snapshot){
+                      snapshot.forEach(function (user){
+                        user.forEach(function (property){
+                          if(property.key===TopFive[c2])
+                          {
+                            var i=1;
+                            c2++;
+                            document.getElementById('topFiveRow').innerHTML+= '<section class="cards" style="align-content: center;">'+
+                            '<article class="card"'+'"onClick="openProperty(\''+property.key+'\')">'+ '<div class="card__info-hover">'+' <path fill="#000000" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />'+'</svg>'+'</div>'+
+                            '<div class="card__img">' + '<img src="'+property.val().Image+'"/>'+'</div>'+
+                            '<a class="card_link">' + '<div class="card_img--hover></div>"'+'</a>'+
+                            '<div class="card__info">'+ '<span class="card__category"></span>'+
+                            '<h3 class="card__title">'+property.val().PropertyName+'</h3>'+
+                           '<span class="card__by">'+'<a class=card__author">'+PRateListCopy[PIDListCopy.indexOf(property.key)]+ ' Stars'+'</a>'+ '</br>'+'<a class="card__author">'+PReviewsCountList[PIDListCopy.indexOf(property.key)]+' Reviews'+ '</a>'+'</span>'+'</div>'
+                           + '</article>';
+                           i++;
+
+                          
+                          } 
+                          '</section>';});}); }); }}});}}});});});}); // close parentheses
+
+
+
+function logout()
+         {
+          sessionStorage.removeItem('userId22');
+          window.location.href = "index.html"
+         }
 </script>
+
 
 <script type="text/javascript">
    function toggleLogin() {
@@ -894,25 +557,22 @@ function RegisterM(){
 </script>
 
 
-<script>
-     $(document).ready(function() {
-  
-  $('.slick-slider').bxSlider({
-    minSlides: 1,
-    maxSlides: 1,
-    controls: false
-  });
-  
-  $( ".explore-button" ).hover(function() {
-    $( this ).parent().addClass("hovered-card");
-  }, function() {
-    $( this ).parent().removeClass("hovered-card");
-  }
-);
-  
-});
-  </script>
 
- </body>
-
+   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+    
+</body>
 </html>
+
+ 
+
+
+
+
+
+
