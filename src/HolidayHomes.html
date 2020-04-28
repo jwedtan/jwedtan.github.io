@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      <script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-storage.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/homePage.css">
+<link rel="stylesheet" type="text/css" href="css/topFive.css">
+<link rel="stylesheet" type="text/css" href="css/footer.css">
+<link rel="stylesheet" type="text/css" href="css/features.css">
+<link rel="stylesheet" type="text/css" href="css/topthreeReviews.css">
+<link rel="stylesheet" type="text/css" href="css/topfiveproperties.css">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
+<link href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Racing+Sans+One|Sirin+Stencil|Yatra+One&display=swap" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+<link rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One|Lalezar|Racing+Sans+One|Sirin+Stencil|Yatra+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="https://themify.me/wp-content/themes/themify-v32/themify-icons/themify-icons.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+      <style>
+        body{
+          background-color: #f4f5f6;
+        }
+        p{
+          color: #243245;
+          font-size: 19px;
+
+        }
+
+        h2{
+          color: #005451;
+          font-family: 'Oswald', sans-serif;
+         font-size: 35px;
+         font-weight: bold;     }
+
+.search{
+          display: flex;
+          width: 33%;
+          margin: 1% auto;
+        }
+        .main-header {
+  width: 100%;
+  border-bottom: 1px solid grey;
+  position: absolute;
+  top: 0;
+}
+
+.MoreInfoButton{
+display: inline-block;
+  width: 90px;
+  height: 40px;
+  border-radius: 20px;
+  background: #eaeaea;
+  color: #300095;
+  text-align: center;  
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 5px;
+  margin-top: 15px;
+  border: 2px solid #fff;
+  transition: all .2s ease;
+  }
+
+.SearchCities{
+   padding: 20px;
+   height: 100%;
+   display: inline-block;
+   max-height: 0 auto;
+   background: #f4f5f6;
+   width: 100%;
+   /*box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3), 0 85px 60px -25px rgba(0, 0, 0, 0.1);*/
+}
+
+#cities{
+  width: 300px;
+  color: #300095;
+  font-weight: bold;
+}
+
+
+
+ @keyframes pulse {
+   0% {
+     box-shadow: 0 0 0 0 var(--hover);
+  }
+}
+
+ #raise:hover, #raise:focus {
+   box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+   transform: translateY(-0.25em);
+}
+
+#raise {
+   --color: #300095;
+   --hover: #300095;
+}
+
+ button {
+   color: var(--color);
+   transition: 0.25s;
+       border-radius: 10px;
+}
+ button:hover, button:focus {
+   border-color: var(--hover);
+   color: #fff;
+}
+ 
+ button {
+   background: transparent;
+   border: 2px solid;
+   font: inherit;
+   line-height: 1;
+   margin: 0.5em;
+       border-radius: 10px;
+   padding: 10px;
+}
+
+.ProInfo{
+  border-radius: 65px;
+  padding-left: 150px;
+  padding-right: 150px;
+  width: 100%;
+  height: 400px;
+  background-color: #eceef3;
+  padding: 30px;
+}
+        .search{
+          width: 33%;
+          margin: 1% auto;
+        }
+     
+        .pCity{
+          font-size: 30px;
+          margin-right: 5%;
+          font-weight: bold;
+        }
+        .HImage{
+          width: 350px;
+          height: 340px;
+          border-radius: 30px;
+          float: left;
+          margin-right: 30px;
+          }          
+    
+        
+        </style>
+
+        <style type="text/css">
+ 
+    body {
+      background-color: transparent;
+      transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      transform-style: preserve-3d;
+      background-color: #f4f5f6;
+    }
+    
+    .searchBox {
+      position: absolute;
+      top: 270px;
+      left: 925px;
+      width: 608px;
+      height: 41px;
+      font-size: 35px;
+
+            }
+    .searchBtn{
+      position: absolute;
+      left: 1550px;
+      font-size: 30px;
+      font-weight: bold;
+      padding: 0px;
+      width: 120px;
+      height: 41px;
+      top: 273px;
+          border-radius: 10px;
+    }
+    #holidayTable{
+      z-index: 40;
+      position: absolute;
+      top:30%;
+      left:5%;
+      font-size: 30px;
+    }
+    .btnSearch{
+      font-size: 20px;
+          margin:  auto;
+          margin-left: 5%;
+          font-weight: bold;
+    }
+    #emailUS{
+  color: #dadada;
+}
+ </style>
+
+    </head>
+
+
+
+    <body>
+
+             <header class="main-header">
+       <div class="header">
+       <img src="media/logo.png" class="webLogo">
+  <!-- //////////////////////////////////// -->
+        <div class="account">
+        <button class="btn btn-secondary" id="sign-upP" onclick="toggleSignUpP()"><a>Sign Up as a Property owner</a></button>
+        <button class="btn btn-secondary" id="sign-upM" onclick="toggleSignUpM()"><a>Sign Up as a Member</a></button>
+        <button class="btn btn-secondary" id="sign-in" onclick="toggleLogin()"><a >Sign in</a></button>
+         <button class="btn btn-secondary" id="sign-out" onclick="logout()">Sign out</button>
+        </div>
+
+
+
+         <div class="overlay">
+         <div class="login4">
+         <div class="header2">
+           <h1 id="POLabel">Sign in</h1>
+           <i class="fas fa-times" onclick="toggleLogin()"></i>
+         </div>
+     
+         <div class="newForm">
+         <div  class="form">
+            <input type="text" id="LEmail" placeholder="Enter your Email" />
+            <input type="password"  id="LPassword" placeholder="Enter your Password"/>
+            <div class="loginbutton">
+          <button onclick="Login()">sign in</button>
+          </br>
+          </br>
+          </br>
+          <button class="btn" id="sign-up"><a>Sign in with google</a></button>
+          </br>
+          </br>
+          </br>
+          <button class="btn" id="sign-up"><a>Sign in with facebook</a></button>
+          </br>
+          </br>
+          </br>
+          </div>
+         <h2>Forget Password?</h2>
+          </div>
+          </div>  
+
+         </div> <!-- login closing tag -->
+         </div> <!-- overlay closing tag -->
+
+          <!--Register-->
+         <div class="overlay2">
+         <div class="login2">
+         <div class="header2">
+           <h1 id="POLabel">Sign up as Property Owner</h1>
+           <i class="fas fa-times" onclick="toggleSignUpP()"></i>
+         </div>
+          <div class="newForm2">
+         <div class="form">
+            <input type="text" id="PFullName" placeholder="Full name" />
+            <input type="text" id="PUsername" placeholder="Username" />
+            <input type="text" id="PEmail" placeholder="Email" />
+            <input type="text" id="PVerifyEmail" placeholder="Verify Email" />
+            <input type="password"  id="PPassword" placeholder="Password"/>
+            <input type="password"  id="PVerifyPassword" placeholder="Verify Password"/>
+            <div class="SignUpbutton">
+            <button onclick="RegisterP()">Register</button>
+          </div>
+          </div>
+          </div>  
+        </div> <!-- login closing tag -->
+        </div> <!-- overlay closing tag -->
+
+
+     <div class="overlay3">
+         <div class="login3">
+         <div class="header3">
+           <h1 id="POLabel">Sign up as a Member</h1>
+           <i class="fas fa-times" onclick="toggleSignUpM()"></i>
+         </div>
+          <div class="newForm3">
+         <div  class="form">
+            <input type="text" id="MFullName" placeholder="Full name" />
+            <input type="text" id="MUsername" placeholder="Username" />
+            <input type="text" id="MEmail" placeholder="Email" />
+            <input type="text" id="MVerifyEmail" placeholder="Verify Email" />
+            <input type="password"  id="MPassword" placeholder="Password"/>
+            <input type="password"  id="MVerifyPassword" placeholder="Verify Password"/>
+            <div class="SignUpbutton">
+            <button onclick="RegisterM()">Register</button>
+          </div>
+          </div>
+          </div>  
+        </div> <!-- login closing tag -->
+        </div> <!-- overlay closing tag -->
+        </div> <!-- Header closing tag -->
+
+<!----->
+         <nav class="main-nav">
+         <ul>
+            <li><a href="index.html" style="color: grey; text-decoration: none;">Home</a></li>
+            <li><a href="HolidayHomes.html" style="color: grey; text-decoration: none;">Holiday Homes</a></li>
+            <li><a href="aboutus.html" style="color: grey; text-decoration: none;">About us</a></li>
+         </ul>
+         </nav>
+         </header>
+
+
+
+
+       </br>
+       </br>
+       </br>
+       </br>
+       </br>
+       </br>
+       </br>
+       </br>
+
+
+    <div class="search">
+      <P class="pCity" ></P>
+       <select style="display: block;" id="cities">
+          <option value="" style="display: block;" >City</option>
+          <option value="idv4">Dammam</option>
+          <option value="idv6">Jeddah</option>
+          <option value="idv6">Makkah</option>
+          <option value="idv6">Medina</option>
+          <option value="idv6">Riyadh</option>
+
+        </select>
+        
+      <button onclick="search()" class="btnSearch" id="raise"; >Search</button>
+
+
+     </div>
+    <div id="homsList">
+   </div>
+   </div>
+
+
+
+
+
+<!--Footer-->
+      <footer class="new_footer_area bg_color">
+            <div class="new_footer_top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                                <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
+                                <p>Contact us via Email <br> We are always there for you!</p>
+                                    <button class="btn btn_get btn_get_two"><a id="emailUS" href="mailto:TrustedReviewsBC@gmail.com?Subject=Contact%20Trusted Reviews" target="_top">Email us</button>
+                                    <p class="mchimp-errmessage" style="display: none;"></p>
+                                    <p class="mchimp-sucmessage" style="display: none;"></p>
+                                </form>
+                            </div>
+                        </div>
+                      
+                        <div class="col-lg-3 col-md-6">
+                            <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+                                <h3 class="f-title f_600 t_color f_size_18">More</h3>
+                                <ul class="list-unstyled f_list">
+                                    <li><a href="AboutUs.html">About us</a></li>
+                                    <li><a href="#">FAQ</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+                                <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
+                                <div class="f_social_icon">
+                                    <a href="https://facebook.com" class="fab fa-facebook"></a>
+                                    <a href="https://twitter.com/trustedreviewsB" class="fab fa-twitter"></a>
+                                    <a href="https://linkedin.com" class="fab fa-linkedin"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer_bg">
+                    <div class="footer_bg_one"></div>
+                    <div class="footer_bg_two"></div>
+                </div>
+            </div>
+            <div class="footer_bottom">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-sm-7">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+
+
+
+    </body> 
+
+
+
+ <script>
+   
+   // Your web app's Firebase configuration
+var firebaseConfig = {
+ apiKey: "AIzaSyBVKHsqnVyaPbvPmgzPqEK_9p2Hm4ZucYc",
+ authDomain: "trusted2020-8c803.firebaseapp.com",
+ databaseURL: "https://trusted2020-8c803.firebaseio.com",
+ projectId: "trusted2020-8c803",
+ storageBucket: "trusted2020-8c803.appspot.com",
+ messagingSenderId: "662663714362",
+ appId: "1:662663714362:web:1842f051b9bddf5f48c703",
+ measurementId: "G-QDZ39S220R"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+var uu = sessionStorage.getItem('userId22');
+          
+if(uu!=null)
+{
+
+   document.getElementById('sign-in').style.display='none';
+   document.getElementById('sign-upP').style.display='none';
+   document.getElementById('sign-upM').style.display='none';
+   document.getElementById('sign-out').style.display='inline';
+}else
+{
+  
+ document.getElementById('sign-in').style.display='inline';
+  document.getElementById('sign-upP').style.display='inline';
+ document.getElementById('sign-upM').style.display='inline';
+ document.getElementById('sign-out').style.display='none';
+ 
+}
+
+firebase.auth.Auth.Persistence.LOCAL;
+
+
+
+var url_string = window.location.href; //window.location.href
+var url = new URL(url_string);
+var city = url.searchParams.get("city");
+
+if(city!=null)
+{
+  firebase.database().ref("Property").once('value').then(function (snapshot){
+    snapshot.forEach(function (user){
+      user.forEach(function (property){
+        if(property.val().City===city)
+        {
+          firebase.database().ref("Reviews").orderByChild('PID').equalTo(property.key).once('value').then(function (reviewSnap){
+            pid=property.key;
+            pName=property.val().PropertyName;
+            pDec=property.val().Description;
+            pImg=property.val().Image;
+            Ptype=property.val().Type;
+            pReviewCount = reviewSnap.numChildren();
+
+               pRate=0;
+            i=0;
+            reviewSnap.forEach(function (review){
+              pRate+= parseInt(review.val().Rate);
+              i++;
+              if(pReviewCount===i)
+              {
+                pRate=pRate/pReviewCount;
+            
+
+        describ = function(pDec, length, ending) {
+    if (length == null) {
+      length = 100;
+    }
+    if (ending == null) {
+      ending = '...';
+    }
+    if (pDec.length > length) {
+      return pDec.substring(0, length - ending.length) + ending;
+    } else {
+      return pDec;
+    }
+  }
+
+            document.getElementById('homsList').innerHTML+=
+
+         '<div class="SearchCities">'+
+                              '<div class="ProInfo">'+
+                '  <img class="HImage"  src="'+pImg+'"/>'+
+
+
+                  '  <h2>'+pName+'</h3>'+
+                  '  <label  id="Ptype" class="matginAuto" style="margin-left: 0;">Type: '+Ptype+' </label> '+ '</br>' + 
+                  '  <p>'+describ(pDec,400)+'</p>'+
+
+                      '   <span onClick="addReview(\''+pid+'\')" class="fa fa-clipboard matginAuto" style="margin-right: 10px;cursor: pointer;"> </span>'+
+                      ' <label class="matginAuto" style="margin-left: 0;">'+pReviewCount+' Reviews</label>'+ '</br>' + 
+
+                        '  <span class="fa fa-star matginAuto" style="margin-right: 10px; color:gold"></span>'+
+                       '  <label class="matginAuto" style="margin-left: 0;">'+pRate+' Stars</label> '+ '</br>' + 
+
+                        ' <button onClick="redirect(\''+pid+'\')" class="MoreInfoButton">More Info</button>'+
+                 
+                        ' </div>'+
+                        ' </div>';
+
+
+    
+        }
+            });
+            
+          
+    
+          });
+        }
+        
+        
+      });
+    });
+  });
+}else
+{
+  
+firebase.database().ref("Property").once('value').then(function (snapshot){
+  snapshot.forEach(function (user){
+    user.forEach(function (property){
+      
+      
+      firebase.database().ref("Reviews").orderByChild('PID').equalTo(property.key).once('value').then(function (reviewSnap){
+        pid=property.key;
+        pName=property.val().PropertyName;
+        pDec=property.val().Description;
+        pImg=property.val().Image;
+        Ptype=property.val().Type;
+        pReviewCount = reviewSnap.numChildren();
+         pRate=0;
+        i=0;
+
+
+
+        describ = function(pDec, length, ending) {
+    if (length == null) {
+      length = 100;
+    }
+    if (ending == null) {
+      ending = '...';
+    }
+    if (pDec.length > length) {
+      return pDec.substring(0, length - ending.length) + ending;
+    } else {
+      return pDec;
+    }
+  }
+
+
+        if(reviewSnap.val()===null)
+        {
+         
+            document.getElementById('homsList').innerHTML+=
+
+            '<div class="SearchCities">'+
+                              '<div class="ProInfo">'+
+                '  <img class="HImage"  src="'+pImg+'"/>'+
+
+
+                  '  <h2>'+pName+'</h3>'+
+                 '  <label  id="Ptype" class="matginAuto" style="margin-left: 0;">Type: '+Ptype+' </label> '+ '</br>' + 
+                  '  <p>'+describ(pDec,400)+'</p>'+
+
+                      '   <span onClick="addReview(\''+pid+'\')" class="fa fa-clipboard matginAuto" style="margin-right: 10px;cursor: pointer;"> </span>'+
+                      ' <label class="matginAuto" style="margin-left: 0;">'+pReviewCount+' Reviews</label>'+ 
+
+                        '  <span class="fa fa-star matginAuto" style="margin-right: 10px; color:gold"></span>'+
+                       '  <label class="matginAuto" style="margin-left: 0;">'+pRate+' Stars</label> '+ '</br>' + 
+
+                        ' <button onClick="redirect(\''+pid+'\')" class="MoreInfoButton">More Info</button>'+
+                 
+                        ' </div>'+
+                        ' </div>';
+
+
+
+       }
+        reviewSnap.forEach(function (review){
+          pRate+= parseInt(review.val().Rate);
+          i++;
+          if(pReviewCount===i)
+          {
+            pRate=Number((pRate/pReviewCount).toFixed(2));
+  
+            
+
+            document.getElementById('homsList').innerHTML+=
+
+             '<div class="SearchCities">'+
+                              '<div class="ProInfo">'+
+                '  <img class="HImage"  src="'+pImg+'"/>'+
+
+
+                  '  <h2>'+pName+'</h3>'+
+                  '  <label  id="Ptype" class="matginAuto" style="margin-left: 0;">Type: '+Ptype+' </label> '+ '</br>' + 
+
+                  '  <p>'+describ(pDec,400)+'</p>'+
+
+                      '   <span onClick="addReview(\''+pid+'\')" class="fa fa-clipboard matginAuto" style="margin-right: 10px;cursor: pointer;"> </span>'+
+                      ' <label class="matginAuto" style="margin-left: 0;">'+pReviewCount+' Reviews</label>'+ '</br>' + 
+
+                        '  <span class="fa fa-star matginAuto" style="margin-right: 10px; color:gold"></span>'+
+                       '  <label class="matginAuto" style="margin-left: 0;">'+pRate+' Stars</label> '+ '</br>' + 
+
+                        ' <button onClick="redirect(\''+pid+'\')" class="MoreInfoButton">More Info</button>'+
+                 
+                        ' </div>'+
+                        ' </div>';
+
+
+          }
+        });
+       
+
+      });
+    });
+  });
+});
+}
+function search()
+{
+  
+  var e2 = document.getElementById("cities");
+         city = e2.options[e2.selectedIndex].text;
+  window.location.href="HolidayHomes.html?city="+city;
+
+}
+
+function redirect (propertyID){
+if(uu!=null){
+firebase.database().ref('MEMBER').child(uu).once('value').then(function(snapshot) {
+  var userinfo = snapshot.val(); 
+var isOwner=userinfo['PropertyOwner'];
+
+
+if(isOwner){
+window.location.href = "SingleHolidayHome-PO.html?p="+propertyID;
+
+}
+else
+{
+window.location.href = "SingleHolidayHome.html?p="+propertyID;
+}
+})
+}
+else{
+  window.location.href = "SingleHolidayHome.html?p="+propertyID;
+}
+
+
+}
+function logout()
+         {
+          sessionStorage.removeItem('userId22');
+          window.location.href = "index.html"
+         }
+
+
+</script>
+
+
+<script>
+function Login(){
+
+var email = document.getElementById('LEmail').value;
+var password = document.getElementById('LPassword').value;
+
+   if (email.length < 4) {
+    window.alert('Please enter an email address.');
+    return;
+  }
+   if (password.length < 4) {
+    window.alert('Please enter a password.');
+    return;
+  }
+firebase.auth().signInWithEmailAndPassword(email , password).then( function(user){
+
+  
+  var currentUser = firebase.auth().currentUser
+  window.alert("Welcom Back: "+currentUser.email);
+
+ sessionStorage.setItem('userId22',currentUser.uid);
+ if(currentUser.uid != null)
+{
+
+firebase.database().ref('MEMBER').child(currentUser.uid).once('value').then(function(snapshot) {
+var userinfo = snapshot.val(); 
+var isOwner=userinfo['PropertyOwner'];
+
+
+
+if(isOwner){
+window.location.href = "OwnerDashboard.html";
+
+}
+else
+{
+window.location.href = "NewMemberDashboard.html";
+}
+
+})
+
+
+}
+
+})
+.catch(function(error){
+alert("Login Failed!", error);
+});
+//}
+//else 
+//{
+//  window.alert("Please fill out all fields");
+//}
+
+
+}
+
+function writeCookie(name,value,days) {
+  var date, expires;
+  if (days) {
+      date = new Date();
+      date.setTime(date.getTime()+(days*24*60*60*1000));
+      expires = "; expires=" + date.toGMTString();
+          }else{
+      expires = "";
+  }
+  document.cookie = name + "=" + value + expires + "; path=/";
+}
+</script>
+
+
+<script>
+////////////Register///////////
+
+function RegisterP(){
+
+var Pemail = document.getElementById('PEmail').value;
+var Ppassword = document.getElementById('PPassword').value;
+var PVpassprd=document.getElementById('PVerifyPassword').value;
+var Pvemail=document.getElementById('PVerifyEmail').value;
+if (Pemail.length < 4) {
+ window.alert('Please enter an email address.');
+ return;
+}
+if (Ppassword.length < 4) {
+ window.alert('Please enter a password.');
+ return;
+}
+if(Pemail!=Pvemail){
+window.alert('Email and verifyEmail does not match ');
+return;}
+if(Ppassword!=PVpassprd){
+window.alert('Password and VerifyPassword does not match ')
+return;}
+// Create user with email and pass.
+// [START createwithemail]
+
+firebase.auth().createUserWithEmailAndPassword(Pemail, Ppassword).then(function(user){ 
+  firebase.auth().currentUser.sendEmailVerification();
+  firebase.database().ref("MEMBER").child(firebase.auth().currentUser.uid,).set({
+    MID :firebase.auth().currentUser.uid,
+    FullName:document.getElementById('PFullName').value,
+    Username:document.getElementById('PUsername').value,
+    Email:document.getElementById('PEmail').value,
+    PropertyOwner:true
+});
+window.alert('congrats'); 
+
+
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // [START_EXCLUDE]
+  if (errorCode == 'auth/weak-password') {
+    alert('The password is too weak.');   
+  } else {
+    alert(errorMessage); 
+  }
+  console.log(error);
+  // [END_EXCLUDE]
+});
+
+
+document.getElementById('PPassword').value = "";
+document.getElementById('PVerifyPassword').value= "";
+return;
+}
+
+
+
+const auth=firebase.auth();
+
+
+function RegisterM(){
+
+      var email = document.getElementById('MEmail').value;
+      var password = document.getElementById('MPassword').value;
+      var Vpassprd=document.getElementById('MVerifyPassword').value;
+      var vemail=document.getElementById('MVerifyEmail').value;
+     if (email.length < 4) {
+       window.alert('Please enter an email address.');
+       return;
+     }
+     
+     if (password.length < 4) {
+       window.alert('Please enter a password.');
+       return;}
+
+      if(email!=vemail){
+         window.alert('Email and verifyEmail does not match ');
+          return;}
+
+      if(password!=Vpassprd){
+          window.alert('Password and VerifyPassword does not match ');
+           return;}
+      // Create user with email and pass.
+      // [START createwithemail]
+      
+      firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user){
+     
+        firebase.auth().currentUser.sendEmailVerification();
+        firebase.database().ref("MEMBER").child(firebase.auth().currentUser.uid,).set({
+          MID :firebase.auth().currentUser.uid,
+          FullName:document.getElementById('MFullName').value,
+          Username:document.getElementById('MUsername').value,
+          Email:document.getElementById('MEmail').value,
+          PropertyOwner:false
+      
+  });
+  window.alert('congrats'); 
+ 
+
+      }).catch(function(error) {
+        // Handle Errors here.
+       
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+ 
+        if (errorCode == 'auth/weak-password') {
+          alert('The password is too weak.');
+         
+        } else {
+          alert(errorMessage);
+        
+        }
+        console.log(error);
+        // [END_EXCLUDE]
+    
+   
+      
+     });
+ 
+   
+     document.getElementById('MPassword').value = "";
+     document.getElementById('MVerifyPassword').value= "";
+     return;
+    
+}
+</script>
+
+<script type="text/javascript">
+   function toggleLogin() {
+      document.querySelector(".overlay").classList.toggle("open");
+    }
+    function toggleSignUpP() {
+      document.querySelector(".overlay2").classList.toggle("open");
+    }
+    function toggleSignUpM() {
+      document.querySelector(".overlay3").classList.toggle("open");
+    }
+</script>
+
+
+<script>
+     $(document).ready(function() {
+  
+  $('.slick-slider').bxSlider({
+    minSlides: 1,
+    maxSlides: 1,
+    controls: false
+  });
+  
+  $( ".explore-button" ).hover(function() {
+    $( this ).parent().addClass("hovered-card");
+  }, function() {
+    $( this ).parent().removeClass("hovered-card");
+  }
+);
+  
+});
+  </script>
+
+ </body>
+
+</html>

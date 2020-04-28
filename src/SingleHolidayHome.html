@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Holiday homes</title>
+    <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-storage.js"></script>
+    <script src="https://use.fontawesome.com/fe459689b4.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
+    <link rel="stylesheet" type="text/css" href="css/HomePage.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="https://themify.me/wp-content/themes/themify-v32/themify-icons/themify-icons.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+ <!-- Blockchain connection -->
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+
+<style type="text/css">
+
+body {
+  background-color: #f4f5f6;
+}
+a {
+  color: #B61364;
+  /* font-size: 35px; */
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+body {
+  font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;
+  color: #283533;
+}
+
+textarea, input{
+  outline: none;
+}
+
+input::-webkit-input-placeholder,
+input:-moz-placeholder,
+input::-moz-placeholder,
+input:-ms-input-placeholder {
+  color: rgba(40, 53, 51, 0.5);
+}
+.comments {
+  margin-top: 10%;
+  margin-left: 20%;
+}
+
+.threader {
+  position: relative;
+  margin: 0 0 0 2%;
+  padding: 0 0 0 2%;
+}
+.threader.origin {
+  border-left: none;
+  padding-left: 0;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.comment {
+  text-align: left;
+  overflow: hidden;
+  min-height: 25px;
+  width: 60%;
+  margin-bottom: 8px;
+}
+.comment__body, .comment__reply {
+  width: 96%;
+  position: relative;
+}
+.comment__reply {
+  min-height: 175px;
+}
+.comment__author {
+  
+  font-weight: bolder;
+  
+}
+.comment__date {
+  margin-left: 12px;
+  font-size: 15px;
+  font-weight: lighter;
+}
+.comment__reviews{
+  font-size: 20px;
+  margin-left: 12px;
+  font-weight: lighter;
+}
+.comment__text {
+  position: relative;
+  display: inline-block;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  padding: 24px;
+  font-size: 25px;
+  color: #283533;
+  margin-top: 18px;
+  background-color:#D6EAF8;
+  min-width: 100%;
+}
+.comment__rate{
+font-size: 20px;
+font-weight: 400;
+margin-left: 3%;
+}
+.comment__text:before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 54px;
+  display: block;
+  width: 0;
+  height: 0;
+  border-bottom: 18px solid #D6EAF8;
+  border-right: 18px solid transparent;
+}
+
+.form-input {
+  margin-top: 15px;
+  padding: 24px;
+  font-size: 16px;
+  color: #283533;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border: 1px solid #EDF1EE;
+  width: 96%;
+}
+
+.heading {
+  /* margin-top: 20px; */
+  font-size: 21px;
+  text-align: center;
+  color: #283533;
+  font-weight: 700;
+  border-top: 1px solid #EDF1EE;
+  /* padding-top: 24px; */
+}
+.row2{
+    display: flex;
+    width: 100%;
+    margin: 1% auto;    
+  }
+   
+  .checked{
+    color: orange;
+  }
+
+#leaveReview {
+  text-decoration: none;
+ 
+  text-align: center;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  display: inline-block;
+  margin: 12px 12px 12px 0px;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 1s;
+  color:#300095; 
+  background-color: #eaeaea;
+  color:#300095; 
+  background-color: #eaeaea;
+  margin-left: 1100px;
+}
+
+@media (min-width: 1025px) {
+  .leaveReview {
+    position: absolute;
+    display: block;
+    right: 3%;
+    margin-bottom: 48px;
+  }
+
+  .heading {
+    border: none;
+    padding: 0px;
+  }
+  .heading:before, .heading:after {
+    background-color: #EDF1EE;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 37%;
+  }
+  .heading:before {
+    right: 0.5em;
+    margin-left: -49%;
+  }
+  .heading:after {
+    left: 0.5em;
+    margin-right: -49%;
+  }
+}
+
+.wrapper {
+  height: 420px;
+  width: 654px;
+  margin: 50px auto;
+  border-radius: 7px 7px 7px 7px;
+  /* VIA CSS MATIC https://goo.gl/cIbnS */
+  -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+}
+
+.property-img {
+  float: left;
+  height: 420px;
+  width: 327px;
+}
+
+.property-img img {
+  border-radius: 7px 0 0 7px;
+}
+
+.property-info {
+  float: left;
+  height: 420px;
+  width: 327px;
+  border-radius: 0 7px 10px 7px;
+  background-color: #ffffff;
+}
+
+.property-text {
+  height: 300px;
+  width: 327px;
+  text-align: center;
+}
+
+.property-text h1 {
+  margin: 0 0 0 38px;
+  padding-top: 52px;
+  font-size: 34px;
+  color: #474747;
+}
+
+.property-text h1,
+.property-price-btn p {
+  font-family: 'Bentham', serif;
+  text-align: center;
+  
+}
+
+.property-text h2 {
+  margin: 0 0 47px 38px;
+  font-size: 13px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #d2d2d2;
+  letter-spacing: 0.2em;
+}
+
+.property-text p {
+  height: 125px;
+  margin: 0 0 0 38px;
+  font-family: 'Playfair Display', serif;
+  color: #8d8d8d;
+  line-height: 1.7em;
+  font-size: 15px;
+  font-weight: lighter;
+  overflow: hidden;
+}
+
+
+
+span {
+  display: inline-block;
+  height: 50px;
+  font-family: 'Suranna', serif;
+  font-size: 34px;
+}
+
+  
+.main-header {
+  width: 100%;
+  border-bottom: 1px solid grey;
+  position: absolute;
+  top: 0;
+  padding-top: 0;
+}
+
+.webLogo {
+position: absolute;
+      top: 0;
+      left: 0;
+      transform-style: preserve-3d;
+      transform: translate3d(1px, -1px, 0px);
+      width: 170px;
+      height: 130px;
+}
+
+.main-nav,
+.main-nav li {
+  float: left;
+  color: grey;
+  
+}
+.main-nav {
+  margin-left: 150px; 
+  z-index: 1;
+}
+.main-nav ul{ 
+color: #222;
+ }
+.main-nav a {
+  line-height: 68px;
+  display: block;
+  padding: 0 30px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 700;
+}
+.main-nav a:hover {
+  border-bottom: 2px solid grey;
+}
+
+.account {
+  float: right;
+}
+.account .btn {
+  display: inline-block;
+  width: 84px;
+  height: 36px;
+  border-radius: 20px;
+  background: #eaeaea;
+  color: #300095;
+  text-align: center;  
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 5px;
+  margin-top: 15px;
+  border: 2px solid #fff;
+  transition: all .2s ease;
+  z-index: 4;
+}
+.account .btn-secondary {
+  color: #300095;
+  background: #eaeaea;
+    border: 2px solid #fff;
+}
+.account .btn:hover {
+background: #eaeaea;
+  border-color: #eaeaea;
+}
+.account .btn-secondary:hover {
+  background: #eaeaea;
+  border-color: #eaeaea;
+}
+  #sign-out{
+  width: 84px;
+  height: 36px;
+  border-radius: 20px;
+  background: #eaeaea;
+  color: #300095;
+  text-align: center;  
+  font-size: 12px;
+  font-weight: bold;
+  border: 2px solid #fff;
+  transition: all .2s ease;
+  margin-left: 600px;
+ }
+#emailUS{
+  color: #dadada;
+}
+#likebtn, #dislikebtn{
+  color:#300095; 
+  background-color: #eaeaea;
+}
+
+</style>
+</head>
+<body>
+
+<br> 
+<br> 
+<br>
+
+
+ <header class="main-header">
+    <div class="header">
+    <img src="media/logo.png" class="webLogo">
+      </div>
+      <nav class="main-nav">
+      <ul>
+         <li><a  style='font-size:25px;color:grey' href="HolidayHomes.html" class="fas fa-chevron-circle-left"></a></li>
+         <li><a href="index.html" style="color: grey; text-decoration: none;">Home</a></li>
+         <li><a href="HolidayHomes.html" style="color: grey; text-decoration: none;">Holiday Homes</a></li>
+         <li><a href="aboutus.html" style="color: grey; text-decoration: none;">About us</a></li>
+      </ul>
+      </nav>
+      </header>
+
+
+    <div class="wrapper">
+
+        <div class="property-img">
+          <img id="property-img"src="" height="420" width="327">
+        </div>
+        <div class="property-info">
+          <div class="property-text">
+            <h1 id="propName"></h1>
+          </br> </br>
+            <p id="desc"> </p>
+            <div id="location">
+              </div>  
+            <p id="txtRate" class="p-lite" style="font-size: 27px; margin-right: 10%;">0 Stars</p>
+          </div>
+         
+        </div>
+      </div>
+
+
+<div class="comments">
+
+    <div class="threader origin">
+        <div id="c-1" class="comment">
+            <div  id="review"class="comment__body">
+                
+            </div>
+        </div>
+    </div>
+    
+   
+    
+</div>
+    </div>
+</div>
+    <div class="heading">How was your experience?</div>
+    <div class="threader">
+        <div class="comment-submit">
+          <P style="margin-right: 2%;">Rate</P> 
+          <div class="row2">
+          <span class=" fa fa-star "  onclick="starmark(this)" id="1one" style="font-size: 30px;cursor:pointer" ></span>
+          <span class=" fa fa-star "  onclick="starmark(this)" id="2one" style="font-size: 30px;cursor:pointer" ></span>
+          <span class=" fa fa-star "  onclick="starmark(this)" id="3one" style="font-size: 30px;cursor:pointer" ></span>
+          <span class=" fa fa-star "  onclick="starmark(this)" id="4one" style="font-size: 30px;cursor:pointer" ></span>
+          <span class=" fa fa-star "  onclick="starmark(this)" id="5one" style="font-size: 30px;cursor:pointer" ></span>
+        </div>
+                <input
+                        type="text"
+                        id="RText"
+                        name="comment"
+                        class="form-input"
+                        placeholder="Share your review.."/>
+                   
+
+                <button type ="submit" class="btn btn__submit" id="leaveReview" onclick="handleAddRev()">leave a review</button>
+           
+
+        </div>
+    </div>
+
+<br>
+<br>
+
+<!--Footer-->
+      <footer class="new_footer_area bg_color">
+            <div class="new_footer_top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                                <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
+                                <p>Contact us via Email <br> We are always there for you!</p>
+                                    <button class="btn btn_get btn_get_two"><a id="emailUS" href="mailto:TrustedReviewsBC@gmail.com?Subject=Contact%20Trusted Reviews" target="_top">Email us</button>
+                                    <p class="mchimp-errmessage" style="display: none;"></p>
+                                    <p class="mchimp-sucmessage" style="display: none;"></p>
+                                </form>
+                            </div>
+                        </div>
+                      
+                        <div class="col-lg-3 col-md-6">
+                            <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+                                <h3 class="f-title f_600 t_color f_size_18">More</h3>
+                                <ul class="list-unstyled f_list">
+                                    <li><a href="AboutUs.html">About us</a></li>
+                                    <li><a href="#">FAQ</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+                                <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
+                                <div class="f_social_icon">
+                                    <a href="https://facebook.com" class="fab fa-facebook"></a>
+                                    <a href="https://twitter.com/trustedreviewsB" class="fab fa-twitter"></a>
+                                    <a href="https://linkedin.com" class="fab fa-linkedin"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer_bg">
+                    <div class="footer_bg_one"></div>
+                    <div class="footer_bg_two"></div>
+                </div>
+            </div>
+            <div class="footer_bottom">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-sm-7">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+
+</body>
+
+
+
+
+<script>
+
+function handleAddRev(){
+    addReview();
+    App.AddReview();
+  }
+ var firebaseConfig = {
+      apiKey: "AIzaSyBVKHsqnVyaPbvPmgzPqEK_9p2Hm4ZucYc",
+      authDomain: "trusted2020-8c803.firebaseapp.com",
+      databaseURL: "https://trusted2020-8c803.firebaseio.com",
+      projectId: "trusted2020-8c803",
+      storageBucket: "trusted2020-8c803.appspot.com",
+      messagingSenderId: "662663714362",
+      appId: "1:662663714362:web:1842f051b9bddf5f48c703",
+      measurementId: "G-QDZ39S220R"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var uu = sessionStorage.getItem('userId22');
+    var url_string = window.location.href; //window.location.href
+    var url = new URL(url_string);
+    var PID = url.searchParams.get("p");
+    firebase.database().ref("Property").once('value').then(function(snapshot){
+      snapshot.forEach(function (user){
+          
+        user.forEach(function (property){
+          if(property.key===PID)
+          {
+            property.val().Location['lat']
+            reviewCount=0;
+            pRate0=0;
+            i=0;
+            firebase.database().ref("Reviews").orderByChild('PID').equalTo(property.key).once('value').then(function (reviewSnap){
+              if(reviewSnap.val()===null)
+              {
+            
+            
+            document.getElementById('propName').innerText=property.val().PropertyName;
+            document.getElementById('property-img').src=property.val().Image;
+            document.getElementById('desc').innerText=property.val().Description;
+                  document.getElementById('txtRate').innerHTML+=pRate0+" Stars";
+                  document.getElementById('location').innerHTML+=
+                  '<svg class="bi bi-map" style="color:purple;" onclick="SClick(\'https://maps.google.com/?q=' + property.val().Location['lat']+ ','+ property.val().Location['lng']+'\')" width="1.5em" height="2.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">'+
+                  '<path fill-rule="evenodd" d="M15.817.613A.5.5 0 0116 1v13a.5.5 0 01-.402.49l-5 1a.502.502 0 01-.196 0L5.5 14.51l-4.902.98A.5.5 0 010 15V2a.5.5 0 01.402-.49l5-1a.5.5 0 01.196 0l4.902.98 4.902-.98a.5.5 0 01.415.103zM10 2.41l-4-.8v11.98l4 .8V2.41zm1 11.98l4-.8V1.61l-4 .8v11.98zm-6-.8V1.61l-4 .8v11.98l4-.8z" clip-rule="evenodd"/>'+
+                   '</svg>';
+
+
+                  
+              }
+              reviewCount=reviewSnap.numChildren();
+              reviewSnap.forEach(function(rev){
+                pRate0+= parseInt(rev.val().Rate);
+                i++
+                if(i===reviewCount)
+                {
+                  pRate0=Number((pRate0/reviewCount).toFixed(2));
+
+                  document.getElementById('propName').innerText=property.val().PropertyName;
+                  document.getElementById('property-img').src=property.val().Image;
+                  document.getElementById('desc').innerText=property.val().Description;
+                  document.getElementById('txtRate').innerText=pRate0+" Stars";
+                  document.getElementById('location').innerHTML+=
+                  '<svg class="bi bi-map"  style="color:purple;" onclick="SClick(\'https://maps.google.com/?q=' + property.val().Location['lat']+ ','+ property.val().Location['lng']+'\')" width="1.5em" height="2.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">'+
+                  '<path  fill-rule="evenodd" d="M15.817.613A.5.5 0 0116 1v13a.5.5 0 01-.402.49l-5 1a.502.502 0 01-.196 0L5.5 14.51l-4.902.98A.5.5 0 010 15V2a.5.5 0 01.402-.49l5-1a.5.5 0 01.196 0l4.902.98 4.902-.98a.5.5 0 01.415.103zM10 2.41l-4-.8v11.98l4 .8V2.41zm1 11.98l4-.8V1.61l-4 .8v11.98zm-6-.8V1.61l-4 .8v11.98l4-.8z" clip-rule="evenodd"/>'+
+                   '</svg>';
+                  
+                }
+              });
+            });
+
+          }
+        });
+      });
+    });
+    getReviews();
+    function getReviews(){
+      var count=0;
+    firebase.database().ref("Reviews").orderByChild('PID').equalTo(PID).once('value').then(function(snapshot){
+      snapshot.forEach(function(Review){
+        var Reviewerid=Review.val().UID;
+        var ReviewDate= Review.val().DateTime;
+        var ReviewTxt= Review.val().Txt;
+        var ReviewRate= Review.val().Rate;
+       
+
+        firebase.database().ref("Reviews").child(Review.key).child('Like').once('value').then(function (likesnapshot){
+         
+          firebase.database().ref("Reviews").child(Review.key).child('Dislike').once('value').then(function (dlikesnapshot){
+            
+            firebase.database().ref("MEMBER").child(Reviewerid).once('value').then(function(Reviewer){
+              var ReviewerName= Reviewer.val().FullName;
+             var ReviewerImage= Reviewer.val().ProfileImage;
+             var ReviewerThiqa=0;
+             if(Reviewer.val().Thiqa!=null)
+             {
+              var ReviewerThiqa=Reviewer.val().Thiqa;
+             }
+            
+             var numberOfReviews;
+             firebase.database().ref("Reviews").orderByChild('UID').equalTo(Reviewerid).once('value').then(function(r){
+              numberOfReviews=r.numChildren();
+              ReviewLike=likesnapshot.numChildren()-1;
+              ReviewDislike=dlikesnapshot.numChildren()-1;
+              document.getElementById('review').innerHTML+=
+          '<div class="comment__header>"'+'<a class="comment__author" id="author-c-1" style="font-size:25px;" >'+ReviewerName+'</a>'
+         + '<span class="comment__reviews"> Reviews: '+numberOfReviews+'</span></div>'
+         +'<span class="comment__reviews"> Thiqah: '+ReviewerThiqa+'</span></div>'
+          +'<div class="comment__rate">'+ReviewRate+
+            ' Stars<div class="comment__text">'+ReviewTxt+'</div>'+
+            
+          '<p class="comment__date" style="float: right;">'+ReviewDate+'</p></div></br>'+
+          '<div class="comment__footer">'+'<button style="margin-bottom:3%; margin-right:1%" class="btn btn_secondary" id="likebtn" onclick="addLike(\''+Review.key+'\')">'+ReviewLike +' <i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i></button>'+
+          '<button style="margin-bottom:3%" class="btn" id="dislikebtn" onclick="addDislike(\''+Review.key+'\')">'+ReviewDislike+' <i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i></button>'
+          
+          
+          
+          
+          +'</div>';
+
+    
+             });
+            });
+
+          });
+        });
+
+      });
+    });
+    }
+   
+
+   function SClick(url){
+    var win = window.open(url, '_blank');
+    win.focus();
+   }
+
+
+   function addReview(){
+  var url_string = window.location.href; //window.location.href
+  var url = new URL(url_string);
+  var PID1 = url.searchParams.get("p");
+ 
+  if(uu==null){
+    window.alert("You have to log in to write a review!");
+return;
+
+  }
+  
+  if(PID1!=null){
+    var userid=uu;
+  var rate=rating
+  var ReviewText=document.getElementById('RText').value;
+
+  var today = new Date();
+  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  var dateTime = date+' '+time;
+  var RDateTime= dateTime;
+  firebase.database().ref("Reviews").push().set({
+    DateTime:RDateTime,
+    PID:PID1,
+    Txt:ReviewText,
+    UID:userid,
+    Rate:rate,
+    Like:{'defult':0},
+    Dislike:{'defult':0},
+  }).then(function (){
+    alert("Review added successfully");
+    document.getElementById('review').innerHTML="";
+    getReviews();
+ 
+    document.getElementById('RText').value=" ";
+  
+    starmark2();
+   
+  });
+  }else{
+    alert("Error");
+  }
+  
+ }
+  
+ function starmark(item)
+  {
+    var count=item.id[0];
+    rating=count;
+    var subid=item.id.substring(1);
+    for(var i=0;i<5;i++)
+    {
+      if(i<count)
+      {
+        document.getElementById((i+1)+subid).style.color="orange";
+      }else
+      {
+        document.getElementById((i+1)+subid).style.color="black";
+      }
+    }
+  }
+  function starmark2()
+  {
+    for(var i=0;i<5;i++){
+      document.getElementById((i+1)+"one").style.color="black";
+
+    }
+  }
+   
+ function addLike(RID)
+{
+  var uu = sessionStorage.getItem('userId22');
+  if(uu===null)
+  {window.alert("You have to log in to like a review!");
+  }else
+  {
+    firebase.database().ref("Reviews").child(RID).child('UID').once('value').then(function (uidsnap){
+      if(uu!=uidsnap.val())
+      {
+        firebase.database().ref("Reviews").child(RID).child('Dislike').child(uu).once('value').then(function (RDLsnap){
+          isthereDislike=RDLsnap.val();
+          if(isthereDislike!=null)
+          {
+            firebase.database().ref("Reviews").child(RID).child('Dislike').child(uu).remove();
+          }
+        });
+        firebase.database().ref("Reviews").child(RID).child('Like').child(uu).once('value').then(function (RLsnap){
+         var isthereLike= RLsnap.val();
+          if(isthereLike===null)
+          {
+            firebase.database().ref("Reviews").child(RID).child('Like').child(uu).set(1);
+            firebase.database().ref("Reviews").child(RID).once('value').then(function (rev){
+              reviewOwnerID=rev.val().UID;
+              firebase.database().ref("MEMBER").child(uu).child('FullName').once('value').then(function (name){
+                firebase.database().ref("Notification").push().set({UID:reviewOwnerID,Txt:name.val()+' Liked your Review'}).then(function (){
+                  firebase.database().ref("Reviews").orderByChild("UID").equalTo(reviewOwnerID).once("value").then(function (revList1){
+                    var totalLike=0;
+                    var totalDislike=0;
+                    var ii=0
+                    revList1.forEach(function(rev1){
+                      firebase.database().ref("Reviews").child(rev1.key).child('Like').once('value').then(function (likesnapshot1){
+         
+                        firebase.database().ref("Reviews").child(rev1.key).child('Dislike').once('value').then(function (dlikesnapshot1){
+                          totalLike+=likesnapshot1.numChildren()-1
+                          totalDislike+=dlikesnapshot1.numChildren()-1
+                          ii++;
+                          if(ii===revList1.numChildren())
+                          {
+                            
+                            if(totalLike/(totalDislike+1)*2 >4)
+                            {
+                              alert(totalLike);
+                              alert(totalDislike);
+                              firebase.database().ref("MEMBER").child(reviewOwnerID).child('Thiqa').once("value").then(function (thiqaSnap){
+                                var thiqa=thiqaSnap.val();
+                                thiqa++;
+                                firebase.database().ref("MEMBER").child(reviewOwnerID).child('Thiqa').set(thiqa);
+                              });
+                            }
+                          }
+                        });
+                      });
+                          
+                    });
+                  });
+
+                });
+                document.getElementById('review').innerHTML='';
+                getReviews();
+              });
+            });
+           
+          }else
+          {
+            alert("You liked this Review already !");
+          }
+        });
+      }else
+      {
+        alert("Can't  Like your self !");
+      }
+    });
+    
+  }
+}
+
+function addDislike(RID)
+{
+  var uu = sessionStorage.getItem('userId22');
+  if(uu===null)
+  {
+   
+    window.alert("You have to log in to dislike a review!");
+  }
+  else
+  {
+    firebase.database().ref("Reviews").child(RID).child('UID').once('value').then(function (uidsnap){
+      
+      if(uu!=uidsnap.val())
+      {
+        firebase.database().ref("Reviews").child(RID).child('Like').child(uu).once('value').then(function (RLsnap){
+          isthereLike=RLsnap.val();
+          
+          if(isthereLike!=null)
+          {
+            firebase.database().ref("Reviews").child(RID).child('Like').child(uu).remove();
+          }
+        });
+        firebase.database().ref("Reviews").child(RID).child('Dislike').child(uu).once('value').then(function (RDLsnap){
+         var isthereDislike= RDLsnap.val();
+          if(isthereDislike===null)
+          {
+            firebase.database().ref("Reviews").child(RID).child('Dislike').child(uu).set(1);
+            firebase.database().ref("Reviews").child(RID).once('value').then(function (rev){
+              reviewOwnerID=rev.val().UID;
+               firebase.database().ref("MEMBER").child(uu).child('FullName').once('value').then(function (name){
+                firebase.database().ref("Notification").push().set({UID:reviewOwnerID,Txt:name.val()+' Disliked your Review'});
+                document.getElementById('review').innerHTML='';
+                getReviews();
+              });
+              
+            });
+          }else
+          {
+            alert("You disliked this Review already !")
+          }
+        });
+      }else
+      {
+        alert("Can't  Dislike your self !")
+      }
+    });
+    
+  }
+}
+
+
+function logout()
+         {
+          sessionStorage.removeItem('userId22');
+          window.location.href = "index.html"
+         }
+</script>
+</html>

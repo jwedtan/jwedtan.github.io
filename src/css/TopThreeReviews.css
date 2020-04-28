@@ -1,0 +1,112 @@
+.font--robotoslab {
+   font-family: 'Roboto Slab', Georgia, serif;
+   font-weight: 700;
+   text-align: center;
+}
+.font--robotoslab h2{
+   font-family: 'Roboto Slab', Georgia, serif;
+   font-weight: 700;
+   color: #455a64;
+  text-align: center;
+}
+ .font--roboto {
+   font-family: 'Roboto', Arial, sans-serif;
+   font-weight: 400;
+      text-align: center;
+      color: #455a64;
+}
+ .bx-viewport {
+   overflow: visible !important;
+}
+ .bx-pager {
+   margin-top: 20px;
+   display: flex;
+   justify-content: center;
+}
+ .bx-wrapper .bx-pager.bx-default-pager a {
+   background: #666;
+   text-indent: -9999px;
+   display: block;
+   width: 15px;
+   height: 15px;
+   margin: 0 10px;
+   outline: 0;
+   -moz-border-radius: 10px;
+   -webkit-border-radius: 10px;
+   border-radius: 10px;
+   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+ .bx-wrapper .bx-pager.bx-default-pager a:hover, .bx-wrapper .bx-pager.bx-default-pager a.active {
+   background: rgba(0, 0, 0, 0.7);
+}
+ .full-card {
+   margin: 0 auto;
+   display: flex;
+   justify-content: center;
+   align-items: stretch;
+   padding: 60px;
+   height: 80vh;
+   max-height: 600px;
+   background: white;
+   width: 90%;
+   max-width: 1300px;
+   box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3), 0 85px 60px -25px rgba(0, 0, 0, 0.1);
+}
+ .font-card {
+   position: relative;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: flex-end;
+   background: linear-gradient(45deg, #7283a7 0%, rgba(223, 234, 238, 1) 100%);
+   padding: 20px 20px;
+   color: white;
+   margin: 0 15px;
+   text-align: center;
+   box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3);
+   transition: box-shadow 0.3s, transform 0.3s;
+   transition-delay: 0.15s;
+}
+ .font-card.hovered-card {
+   box-shadow: 0 5px 3px -5px rgba(0, 0, 0, 0.3), 0 2px 8px -5px rgba(0, 0, 0, 0.3);
+   transform: translateY(-2px);
+}
+ .font-card p {
+   line-height: 1.4;
+}
+ .font-description {
+   padding: 0 30px;
+   margin: 15px;
+   width: 44%;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+}
+
+ .font-description h2 span {
+   color: #d2d2d2;
+}
+ .font-description p {
+   padding-left: 15px;
+   color: #777;
+   line-height: 1.8;
+}
+ .font-description p:before {
+   content: "\2014";
+   margin-left: -15px;
+   margin-right: 4px;
+}
+ @media screen and (max-width: 991px) {
+   .full-card {
+     height: auto;
+     flex-wrap: wrap;
+     padding: 30px 60px;
+  }
+   .font-card {
+     width: calc(50% - 30px);
+  }
+   .font-description {
+     width: 100%;
+  }
+}
