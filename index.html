@@ -1398,9 +1398,11 @@ border-bottom-right-radius: 12px;
 .card__author {
     font-weight: 600;
     text-decoration: none;
-    color: #AD7D52;
+    color: black;
 }
-
+a .card__author{
+  color: black;
+}
 .card:hover .card__img--hover {
     height: 100%;
     opacity: 0.3;
@@ -2327,7 +2329,7 @@ firebase.database().ref("Property").once('value').then(function (POwnerList0){
                             '<a class="card_link">' + '<div class="card_img--hover></div>"'+'</a>'+
                             '<div class="card__info">'+ '<span class="card__category"></span>'+
                             '<h3 class="card__title">'+property.val().PropertyName+'</h3>'+
-                           '<span class="card__by">'+'<a class=card__author">'+PRateListCopy[PIDListCopy.indexOf(property.key)]+ ' Stars'+'</a>'+ '</br>'+'<a class="card__author">'+PReviewsCountList[PIDListCopy.indexOf(property.key)]+' Reviews'+ '</a>'+'</span>'+'</div>'
+                           '<span class="card__by">'+'<a class=card__author" style="color:black;">'+PRateListCopy[PIDListCopy.indexOf(property.key)]+ ' Stars'+'</a>'+ '</br>'+'<a class="card__author" style="color:black;">'+PReviewsCountList[PIDListCopy.indexOf(property.key)]+' Reviews'+ '</a>'+'</span>'+'</div>'
                            + '</article>';
                            i++;
 
