@@ -805,9 +805,9 @@ h1{
         
          
               
-            } else {
+            } 
             if(snapshot.val().URL!=null){
-           var memImage=snapshot.val().URL;} }
+           var memImage=snapshot.val().URL;} 
             firebase.database().ref("Reviews").orderByChild('UID').equalTo(uu).once('value').then(function(r){
               numberOfReviews=r.numChildren();
            
