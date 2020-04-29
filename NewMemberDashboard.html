@@ -807,7 +807,9 @@ h1{
               
             } 
             if(snapshot.val().URL!=null){
-           var memImage=snapshot.val().URL;} 
+           var memImage=snapshot.val().URL;
+           document.getElementById("profile-card").innerHTML=
+           '<img class="profile-image" style="width:40%; height:80%;" src=\''+memImage+'\'> ';} 
             firebase.database().ref("Reviews").orderByChild('UID').equalTo(uu).once('value').then(function(r){
               numberOfReviews=r.numChildren();
            
@@ -815,10 +817,9 @@ h1{
           
 
             document.getElementById("profile-card").innerHTML+=
-            '<img class="profile-image" style="width:40%; height:80%;" src=\''+memImage+'\'> '+
          '<h1 class="profile-name">'+userName+'</h1>'+
-         '<p class="profile-description">'+thiqaah+' thiqah </p>'+
-         '<p class="profile-description">'+numberOfReviews+' reveiws </p>'+
+         '<p class="profile-description">'+thiqaah+' Thiqah </p>'+
+         '<p class="profile-description">'+numberOfReviews+' Reveiws </p>'+
         //  + '<p class="collections-content  ">' + '</br>'
          +  '</div>'+'</ul> </div>';
          
