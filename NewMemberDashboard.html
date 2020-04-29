@@ -801,17 +801,13 @@ h1{
             }
             if(snapshot.val().URL==null){
               document.getElementById("profile-card").innerHTML=
-               '<i class="profile-image-none material-icons">account_circle</i>'+
-               '<h1 class="profile-name">'+userName+'</h1>'+
-         '<p class="profile-description">'+thiqaah+' thiqah </p>'+
-         '<p class="profile-description">'+numberOfReviews+' reveiws </p>'+
-        //  + '<p class="collections-content  ">' + '</br>'
-         +  '</div>'+'</ul> </div>';
+               '<i class="profile-image-none material-icons">account_circle</i>'
+        
          
               
             } else {
             if(snapshot.val().URL!=null){
-           var memImage=snapshot.val().URL;}}
+           var memImage=snapshot.val().URL;} }
             firebase.database().ref("Reviews").orderByChild('UID').equalTo(uu).once('value').then(function(r){
               numberOfReviews=r.numChildren();
            
