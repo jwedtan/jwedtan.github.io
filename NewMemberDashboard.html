@@ -548,7 +548,7 @@ h1{
 
   <header class="main-header">
     <div class="header">
-    <img src="media/logo.png" class="webLogo">
+    <img src="/logo.png" class="webLogo">
       </div>
       <nav class="main-nav">
       <ul>
@@ -801,11 +801,17 @@ h1{
             }
             if(snapshot.val().URL==null){
               document.getElementById("profile-card").innerHTML=
-               '<i class="profile-image-none material-icons">account_circle</i>'
+               '<i class="profile-image-none material-icons">account_circle</i>'+
+               '<h1 class="profile-name">'+userName+'</h1>'+
+         '<p class="profile-description">'+thiqaah+' thiqah </p>'+
+         '<p class="profile-description">'+numberOfReviews+' reveiws </p>'+
+        //  + '<p class="collections-content  ">' + '</br>'
+         +  '</div>'+'</ul> </div>';
+         
               
-            }
+            } else {
             if(snapshot.val().URL!=null){
-           var memImage=snapshot.val().URL;}
+           var memImage=snapshot.val().URL;}}
             firebase.database().ref("Reviews").orderByChild('UID').equalTo(uu).once('value').then(function(r){
               numberOfReviews=r.numChildren();
            
