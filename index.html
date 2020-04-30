@@ -2072,13 +2072,9 @@ window.location.href = "NewMemberDashboard.html";
 
 })
 .catch(function(error){
-alert("Login Failed!", error);
+alert("These credentials you provided do not match our records", error);
 });
-//}
-//else 
-//{
-//  window.alert("Please fill out all fields");
-//}
+
 
 
 }
@@ -2103,7 +2099,7 @@ function forget2(){
     window.alert('Please enter an email address.');
     return;
   }
-  alert("hello");
+
   
 
   var auth = firebase.auth();
@@ -2156,7 +2152,7 @@ firebase.auth().createUserWithEmailAndPassword(Pemail, Ppassword).then(function(
     Email:document.getElementById('PEmail').value,
     PropertyOwner:true
 });
-window.alert('congrats'); 
+window.alert('Your account is successfully created'); 
 
 
 }).catch(function(error) {
@@ -2220,7 +2216,7 @@ function RegisterM(){
           PropertyOwner:false
       
   });
-  window.alert('congrats'); 
+  window.alert('Your account is successfully created'); 
  
 
       }).catch(function(error) {
@@ -2381,42 +2377,27 @@ firebase.database().ref("Reviews").once('value').then(function (snapshot){
               POwnerList.forEach(function (pOwner){
                 firebase.database().ref("Property").child(pOwner.key).child(R.val().PID).once('value').then(function(P){
                   
-                    if(P.val()!=null){
-                      document.getElementById('TopThreeRow').innerHTML+=
-
-                      // '<div class="full-card">'+
-                      '<div class="font-card roboto-card">'
-                      +'<img class="ReviewerImg" src="https://www.jumpstarttech.com/files/2018/08/Network-Profile.png"/>'+'<div class="RHead">'+ '<h2 class="font--robotoslab" ><span></span><h2>'  +
+                  if(P.val()!=null){
+                      if(M.val().URL==null){
+                    document.getElementById('TopThreeRow').innerHTML+=
+                    '<div class="font-card roboto-card">'
+                      +'<img class="ReviewerImg" src="profilePic.png" style="height:10%"/>'+'<div class="RHead">'+ '<h2 class="font--robotoslab" ><span></span><h2>'  +
                       '<h2 class="font--roboto">'+ M.val().FullName+ '</h2>'+ '<p class="font--roboto">'+ P.val().PropertyName+'</p>'+
                       '<p class="font--roboto">'+P.val().City+'</p> </div>'+ '</br> <p class="font--roboto">'+ R.val().Txt+'</p>'+
                       '<div class="Rfooter>" <p>'+R.val().DateTime+'</p> </div>'
-                      
-                      
-                      
-                      
-                      
-                      
                       +'</div>';
-                      
+                    
+                  }
+                  if(M.val().URL!=null){
+                    document.getElementById('TopThreeRow').innerHTML+=
 
-                      //     '<div class="full-card">'+
-                      //   '<div class="font--roboto">'+
-                      //     '<img class="ReviewerImg" src="https://www.jumpstarttech.com/files/2018/08/Network-Profile.png"/>'+
-                      //     '<div class="font--roboto">'+
-                      //       '<div class="font--roboto";>'+M.val().FullName+
-                      //       '<div class="font--roboto">'+P.val().PropertyName+
-                      //       '<h3>'+P.val().City+'</h3>'+
-                      //     '</div>'+
-                      //   '</div>'+
-                      //   '<P style="height: 180px;">'+R.val().Txt+'</P>'+
-                      //   '<div class="Rfooter">'+
-                      //     '<h3 style="margin: auto;">'+R.val().DateTime+'</h3>'+
-                      //     '<div class="blockchain">'+
-                      //       '<h3 style="margin: auto;">Blockchain</h3>'+
-                      //       '<img style="width: 50px;height:50px" src="https://cdn0.iconfinder.com/data/icons/basic-uses-symbol-vol-3/100/Security_Shield_Secure_Risk_True_Yes_Right-512.png">'+
-                      //     '</div>'+
-                      //   '</div>'+
-                      // '</div>';
+                    '<div class="font-card roboto-card">'
+                      +'<img class="ReviewerImg" style="height:10%" src=\''+M.val().URL+'\'/>'+'<div class="RHead">'+ '<h2 class="font--robotoslab" ><span></span><h2>'  +
+                      '<h2 class="font--roboto">'+ M.val().FullName+ '</h2>'+ '<p class="font--roboto">'+ P.val().PropertyName+'</p>'+
+                      '<p class="font--roboto">'+P.val().City+'</p> </div>'+ '</br> <p class="font--roboto">'+ R.val().Txt+'</p>'+
+                      '<div class="Rfooter>" <p>'+R.val().DateTime+'</p> </div>'
+                      +'</div>';
+                  }
                     }
                 }); });}); });}); } }});});
 
