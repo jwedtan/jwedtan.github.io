@@ -696,6 +696,15 @@ return;
     var userid=uu;
   var rate=rating
   var ReviewText=document.getElementById('RText').value;
+ 
+  if (ReviewText.includes("Nude")||ReviewText.includes("Zeft")||ReviewText.includes("Zgg")
+  ||ReviewText.includes("***")||ReviewText.includes("sex")||ReviewText.includes("hell")
+  ||ReviewText.includes("fuck")||ReviewText.includes("sow")||ReviewText.includes("bitch")
+  ){
+
+    alert("Your review can’t be published, please make sure no inappropriate words were used ");
+    return;
+  }
 
   var today = new Date();
   var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
